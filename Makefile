@@ -8,7 +8,7 @@
 ##LDFLAGS=-lsqlite3
 
 ## PRODUCTION FLAGS:
-CPPFLAGS=-Wall  -O3 -std=c++0x $(PROFILING)
+CPPFLAGS=-Wall  -O3 -std=c++0x $(PROFILING) -Wno-psabi
 LDFLAGS=-lsqlite3
 CXX=g++
 

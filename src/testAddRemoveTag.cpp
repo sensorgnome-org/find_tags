@@ -62,11 +62,13 @@ a graph in graphviz format named testAddRemoveNNN.gv is plotted after event NNN.
     ++i;
   }
 
+#ifdef DEBUG
   bool do_graphs = true;
   if (argc > i && std::string(argv[i]) == "-G") {
     do_graphs = false;
     ++i;
   }
+#endif
 
   string fn;
   if (argc > i)

@@ -1,6 +1,6 @@
 ## Makefile for linux
 
-CXX=gfilt
+CXX=g++
 
 ## PROFILING FLAGS (uncomment to enable profiling)
 ##PROFILING=-g3 -pg -fno-omit-frame-pointer
@@ -12,13 +12,13 @@ CXX=gfilt
 ## to find_tags_motus (do find_tags_motus --help after this rebuild to see details)
 
 ## PRODUCTION FLAGS:
-CPPFLAGS=-Wall -Wno-sign-compare -g -O3 -std=c++11 $(PROFILING) -DPROGRAM_VERSION=$(PROGRAM_VERSION) -DPROGRAM_BUILD_TS=$(PROGRAM_BUILD_TS) -I/usr/local/include/boost_1.60
+CPPFLAGS=-Wall -Wno-sign-compare -g -O3 -std=c++11 $(PROFILING) -DPROGRAM_VERSION=$(PROGRAM_VERSION) -DPROGRAM_BUILD_TS=$(PROGRAM_BUILD_TS)
 
 LDFLAGS=-ldl -lrt -lboost_serialization -lboost_program_options -lsqlite3
 PROGRAM_VERSION=\""$(shell git describe)\""
 PROGRAM_BUILD_TS=$(shell date +%s)
 
-all: find_tags_motus testAddRemoveTag dfa_graph.pdf ## find_tags_unifile
+all: find_tags_motus testAddRemoveTag# dfa_graph.pdf ## find_tags_unifile
 
 install: find_tags_motus
 	sudo cp find_tags_motus /sgm/bin
@@ -58,7 +58,7 @@ OBJS=                            \
 # END OF OBJS
 
 clean:
-	rm -f $(OBJS) find_tags_unifile find_tags_motus  find_tags_motus.o  testAddRemoveTag.o
+	rm -f $(OBJS) find_tags_unifile find_tags_motus  find_tags_motus.o  testAddRemoveTag.o testAddRemoveTag
 
 Ambiguity.o: Ambiguity.hpp Ambiguity.cpp
 

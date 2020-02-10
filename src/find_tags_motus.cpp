@@ -682,7 +682,7 @@ main (int argc, char **argv) {
       std::cerr << "Max num candidates: " << Tag_Candidate::get_max_num_cands() << " at " << std::setprecision(14) << Tag_Candidate::get_max_cand_time() << "; now (" << foray.last_seen() << "): " << Tag_Candidate::get_num_cands() << std::endl;
       foray.pause();
     }
-    catch (std::runtime_error e) {
+    catch (std::runtime_error& e) {
       std::cerr << e.what() << std::endl;
       exit(2);
     }

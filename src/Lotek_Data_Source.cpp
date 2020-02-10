@@ -98,7 +98,7 @@ Lotek_Data_Source::translateLine()
   }
 
   // output a GPS fix, if the tag record has valid lat and lon; DTA files don't report altitude, so report as nan
-  if (!(isnan(dtar.lat) || isnan(dtar.lon))) {
+  if (!(std::isnan(dtar.lat) || std::isnan(dtar.lon))) {
     /* a GPS fix line like:
        G,1458001712,44.34021,-66.118733333,21.6
     */

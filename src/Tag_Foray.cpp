@@ -121,7 +121,7 @@ Tag_Foray::start() {
     case SG_Record::GPS:
       // GPS is not stuck, or Clock_Repair would have dropped the record
       // but only add it if r.v.lat and r.v.lon are actual numbers; r.v.alt might not be reported
-      if (! (isnan(r.v.lat) || isnan(r.v.lon)))
+      if (! (std::isnan(r.v.lat) || std::isnan(r.v.lon)))
         Tag_Candidate::filer->add_GPS_fix( r.ts, r.v.lat, r.v.lon, r.v.alt );
       break;
 
@@ -129,7 +129,7 @@ Tag_Foray::start() {
 
       Tag_Candidate::filer->add_recv_param( r.ts, r.port, r.v.param_flag, r.v.param_value, r.v.return_code, r.v.error);
 
-      if (strcmp("-m", r.v.param_flag) || r.v.return_code || isnan(r.v.param_value)) {
+      if (strcmp("-m", r.v.param_flag) || r.v.return_code || std::isnan(r.v.param_value)) {
         // ignore non-frequency parameter setting, or failed frequency setting
         continue;
       }
